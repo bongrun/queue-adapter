@@ -1,0 +1,23 @@
+{
+  "name": "bongrun/queue-adapter",
+  "description": "Приём смс сообщений",
+  "keywords": ["bongrun", "sms", "api"],
+  "homepage": "https://github.com/bongrun/queue-adapter",
+  "type": "project",
+  "license": "Apache License 2.0",
+  "support": {
+    "issues": "https://github.com/bongrun/queue-adapter/issues?state=open",
+    "source": "https://github.com/bongrun/queue-adapter"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.0",
+    "videlalvaro/php-amqplib": "2.2.*"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "autoload": {
+    "psr-4": {"bongrun\\": "src/"}
+  }
+}
