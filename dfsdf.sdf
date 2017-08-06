@@ -1,7 +1,7 @@
 {
   "name": "bongrun/queue-adapter",
   "description": "Образотка очередей",
-  "keywords": ["bongrun", "queue"],
+  "keywords": ["bongrun", "queue" ],
   "homepage": "https://github.com/bongrun/queue-adapter",
   "type": "project",
   "license": "Apache License 2.0",
