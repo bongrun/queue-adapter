@@ -1,6 +1,6 @@
 {
   "name": "bongrun/queue-adapter",
-  "description": "Образотка очередей",
+  "description": "Обработка очередей",
   "keywords": ["bongrun", "queue" ],
   "homepage": "https://github.com/bongrun/queue-adapter",
   "type": "project",
