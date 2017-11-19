@@ -1,6 +1,6 @@
 <?php
 
-namespace adapter;
+namespace bongrun\adapter;
 
 use PhpAmqpLib\Connection\AMQPConnection;
 use PhpAmqpLib\Exception\AMQPTimeoutException;
