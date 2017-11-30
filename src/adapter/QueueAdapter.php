@@ -6,6 +6,10 @@ use PhpAmqpLib\Connection\AMQPConnection;
 use PhpAmqpLib\Exception\AMQPTimeoutException;
 use PhpAmqpLib\Message\AMQPMessage;
 
+/**
+ * Class QueueAdapter
+ * @package bongrun\adapter
+ */
 class QueueAdapter
 {
     /**
