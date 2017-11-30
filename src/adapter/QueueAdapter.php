@@ -39,15 +39,7 @@ class QueueAdapter
     public function put(string $channel, $data)
     {
         $this->loadChannel($channel);
-        if (is_array($data)) {
-            $data = 'a' . json_encode($data);
-        } elseif (is_object($data)) {
-            $data = 'o' . serialize($data);
-        } elseif (is_string($data)) {
-            $data = 's' . $data;
-        } else {
-            $data = 'n' . $data;
-        }
+        $data = serialize($data);
         $msg = new AMQPMessage($data, ["delivery_mode" => 2]);
         $this->channel->basic_publish(
             $msg,        #message
@@ -83,23 +75,7 @@ class QueueAdapter
                 $count++;
                 $while = false;
                 $data = $msg->body;
-                switch (substr($data, 0, 1)) {
-                    case 'a':
-                        $result = json_decode(substr($data, 1), true);
-                        break;
-                    case 'o':
-                        $result = unserialize(substr($data, 1));
-                        break;
-                    case 's':
-                        $result = (string)(substr($data, 1));
-                        break;
-                    case 'n':
-                        $result = (float)(substr($data, 1));
-                        break;
-                    default:
-                        $result = null;
-                        break;
-                }
+                $result = unserialize($data);
                 $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
                 return true;
             }
@@ -133,23 +109,7 @@ class QueueAdapter
             false,                        #не ждать - TRUE: сервер не будет отвечать методу. Клиент не должен ждать ответа
             function ($msg) use ($callback) {
                 $data = $msg->body;
-                switch (substr($data, 0, 1)) {
-                    case 'a':
-                        $result = json_decode(substr($data, 1), true);
-                        break;
-                    case 'o':
-                        $result = unserialize(substr($data, 1));
-                        break;
-                    case 's':
-                        $result = (string)(substr($data, 1));
-                        break;
-                    case 'n':
-                        $result = (float)(substr($data, 1));
-                        break;
-                    default:
-                        $result = null;
-                        break;
-                }
+                $result = unserialize($data);
                 if ($callback($result)) {
                     $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
                 }
