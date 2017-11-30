@@ -12,7 +12,7 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=7.0",
-    "videlalvaro/php-amqplib": "2.2.*"
+    "videlalvaro/php-amqplib": "2.7.0"
   },
   "config": {
     "process-timeout": 1800
